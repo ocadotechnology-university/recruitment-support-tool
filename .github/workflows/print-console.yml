@@ -1,1 +1,7 @@
-
+name: print-console
+on: workflow_dispatch
+jobs:
+  print-on-console:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo Hello World! 
