@@ -3,5 +3,11 @@ on: workflow_dispatch
 jobs:
   print-on-console:
     runs-on: ubuntu-latest
+    outputs:
+      output1: ${{ steps.step1.outputs.test }}
     steps:
-      - run: echo Hello World! 
+      - id: step1 
+      - run: echo Hello World! >> "$GITHUB_OUTPUT"
+      - id: step2
+      - run: echo Hello World!
+      - run: ls
