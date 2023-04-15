@@ -4,5 +4,11 @@ jobs:
   print-on-console:
     runs-on: ubuntu-latest
     steps:
-      - run: echo Hello World!
+      - uses: actions/checkout@v3
+      - run: echo Hello World! from console
       - run: ls
+  
+  run-bash-script:
+    runs-on: ubuntu-latest
+    steps:
+      - run: 
