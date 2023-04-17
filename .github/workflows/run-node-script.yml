@@ -7,6 +7,5 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - run: chmod +x src/test.js
-      - run: cd src
-      - run: node test.js ./test
+      - run: node src/test.js src/test
   
