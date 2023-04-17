@@ -1,0 +1,12 @@
+name: print-console
+on: workflow_dispatch
+jobs:
+  print-on-console:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: echo Hello World!
+      - run: ls
+      - run: chmod +x scripts/script.sh
+      - run: ./scripts/script.sh
+  
