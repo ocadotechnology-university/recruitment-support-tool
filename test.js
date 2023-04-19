@@ -254,7 +254,7 @@ async function main() {
   projectId = args[3];
 
   await readDirectoriesRecursive(args[1], '')
-  console.log("Number of files added to the paged: ", length(variablesToBodyToFetchAPI.data.files))
+  console.log("Number of files added to the paged: ", Object.keys(variablesToBodyToFetchAPI.data.files).length)
   await generateResponse();
 }
 
