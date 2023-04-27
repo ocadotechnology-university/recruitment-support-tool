@@ -250,8 +250,11 @@ async function main() {
 
   const args = process.argv.slice(1);
 
-  bearerToken = args[2];
-  projectId = args[3];
+  bearerToken = process.env.BEARER_TOKEN;
+  projectId = process.env.PROJECT_ID;
+  console.log(projectId)
+
+  variablesToBodyToFetchAPI.projectId = parseInt(projectId);
 
   await readDirectoriesRecursive(args[1], '')
   console.log("Number of files added to the paged: ", Object.keys(variablesToBodyToFetchAPI.data.files).length)
