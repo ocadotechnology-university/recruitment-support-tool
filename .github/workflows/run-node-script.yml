@@ -9,7 +9,7 @@ jobs:
     container: node:18.16
     steps:
       - uses: actions/checkout@v3
-      - run: ifconfig
+      - run: wget -qO- https://ipecho.net/plain ; echo
       - run: curl ifconfig.me
       - run: chmod +x src/test.js
       - run: node src/test.js src/test
