@@ -1,5 +1,8 @@
 name: run-node-script
-on: workflow_dispatch
+on: 
+  push:
+    branches:
+      - master
 jobs:
   run-script:
     runs-on: ubuntu-latest
