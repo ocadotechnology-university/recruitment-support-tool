@@ -1,0 +1,9 @@
+name: folder_names
+on: workflow_dispatch
+jobs:
+  folder_names:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: chmod +x scripts/printing_folder_names.sh
+      - run: ./scripts/printing_folder_names.sh
