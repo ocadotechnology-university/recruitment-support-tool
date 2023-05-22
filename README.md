@@ -5,9 +5,9 @@ ten branch jest juz z ladnymi nazwami i całkiem usystematyzowanaa nazwa + ma po
 
 ## Ogólne informacje
 
-Aby dodać nowe zadania należy stworzyć nowy branch, na nim dodać nowe zadania( jakie pliki wymagane jest opis poniżej ) oraz wystawić marge requesta. Po zaakceptowanym merge requeście na githubie zostanie uruchomiony skrypt który puści plik **validator_test.js**, jeśli wszystkie testu zostaną zakończone sukcesem, zostanie wykonany skrypt **uploadFile.js** wrzucający pliki na playcode.io.
+Aby dodać nowe zadania należy stworzyć nowy branch, na nim dodać nowe zadania (jakie pliki wymagane jest opis poniżej) oraz wystawić merge requesta. Po zaakceptowanym merge requeście na githubie zostanie uruchomiony skrypt który puści plik **validator_test.js**, jeśli wszystkie testy zostaną zakończone sukcesem, zostanie wykonany skrypt **uploadFile.js** wrzucający pliki na playcode.io.
 >
-Skrypt bedzie dodawał na playcode z każdego katalogu oznaczonego numerem zadania pliki **task.js** oraz **task_validator.js** oraz pliki konfigurujace
+Skrypt bedzie dodawał na playcode z każdego katalogu oznaczonego numerem zadania pliki **task.js** oraz **task_validator.js** oraz pliki konfiguracyjne
 
 ## Testowanie validatora
 
@@ -21,7 +21,7 @@ W katalogu powinny się znajdować 4 pliki.
 - plik **validator_test.js**
 
 2. Plik **task.js** 
-W tym pliku znajdują się opiy zadań dla kandytatów wraz z podstawową struktura funkcji
+W tym pliku znajdują się opisy zadań dla kandydatów wraz z podstawową strukturą funkcji
 >
 >
 ```javascript
@@ -36,7 +36,7 @@ W tym pliku znajdują się opiy zadań dla kandytatów wraz z podstawową strukt
 W tym pliku znajdują się wzorcowe rozwiązania wszystkich zadań - tak samo nazwane jak w pliku task.js. Dodatkowo mogą się znajdować niepoprawne rozwiązania
 
 4. Plik **task_validator.js**
-W tym pliku znajdują się testy do wszystkich zadań z pliku task.js. Jeżeli w pliku model_solutions.js znajdują się niepoprawnie rozwiazane zadania, należy wywołać te same testy dla poprawnego i niepoprawnego rozwiazania. Nazwy testów powinny być tworzone wg wzoru {nazwa z plik task.js testowanej funkcji}_{spodziewany wynik testu}. Spodziwany wynik testu, jeżeli ma być poprawny wpisujemy true, w przeciwnym wypadku dowolnie, najlepiej false. Osobno tworzymy funckje wykonującą assercje, ich wynik sprawdzamy za pomocą funkcji it w funkcji tests. Każdą funkcję testującą, którą dodajemy należy dodać również w module.exports
+W tym pliku znajdują się testy do wszystkich zadań z pliku task.js. Jeżeli w pliku model_solutions.js znajdują się niepoprawnie rozwiazane zadania, należy wywołać te same testy dla poprawnego i niepoprawnego rozwiązania. Nazwy testów powinny być tworzone wg wzoru {nazwa z plik task.js testowanej funkcji}_{spodziewany wynik testu}. Spodziewany wynik testu, jeżeli ma być poprawny wpisujemy true, w przeciwnym wypadku dowolnie, najlepiej false. Osobno tworzymy funkcje wykonującą asercje, ich wynik sprawdzamy za pomocą funkcji *it* w funkcji tests. Każdą funkcję testującą, którą dodajemy należy dodać również w module.exports
 >
 >
 ```javascript
