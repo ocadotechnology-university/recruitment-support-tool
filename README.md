@@ -5,7 +5,7 @@ ten branch jest juz z ladnymi nazwami i całkiem usystematyzowanaa nazwa + ma po
 
 ## Ogólne informacje
 
-Aby dodać nowe zadania należy stworzyć nowy branch, na nim dodać nowe zadania( jakie pliki wymagane jest opis poniżej ) oraz wystawić marge requesta. Po zaakceptowanym merge requeście na githubie zostanie uruchomiony skrypt który puści plik **validator_test.js**, jeśli wszystkie testu zostaną zakończone sukcesem, zostanie wykonany skrypt **uploadFile.js** wrzucający pliki na playcode.io.
+Aby dodać nowe zadania należy stworzyć nowy branch, na nim dodać nowe zadania (jakie pliki wymagane jest opis poniżej) oraz wystawić merge requesta. Po zaakceptowanym merge requeście na githubie zostanie uruchomiony skrypt który puści plik **validator_test.js**, jeśli wszystkie testy zostaną zakończone sukcesem, zostanie wykonany skrypt **uploadFile.js** wrzucający pliki na playcode.io.
 >
 Skrypt bedzie dodawał na playcode z każdego katalogu oznaczonego numerem zadania pliki **task.js** oraz **task_validator.js** oraz pliki konfiguracyjne
 
@@ -21,7 +21,7 @@ W katalogu powinny się znajdować 4 pliki.
 - plik **validator_test.js**
 
 2. Plik **task.js** 
-W tym pliku znajdują się opiy zadań dla kandytatów wraz z podstawową struktura funkcji
+W tym pliku znajdują się opisy zadań dla kandydatów wraz z podstawową strukturą funkcji
 >
 >
 ```javascript
