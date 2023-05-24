@@ -1,11 +1,11 @@
 var general = require('./model_solutions.js').general
 var incorrectFunction = require('./model_solutions.js').incorrectSolution
-var validator = require('./task_validator')
+var validator = require('./task_validator.js')
 var expect = require('chai').expect
 
 // tutaj dac funkcje z falsem 
 
-//funkcja przyjmuje trzy argumenty - test do sprawdzenia (testToCheck), funckję, którą testuje (functionToTest) oraz spodziewany output (expectedOutput), 
+//funkcja przyjmuje dwa argumenty - funkcje do sprawdzenia (functionToCheck) oraz spodziewany output (expectedOutput), 
 //jeżeli sprawdzana funkcja zwraca spodziewany output to jako rezultat testu zwracamy true, w przeciwnym wypadku false
 var test = (testToCheck, functionToTest, expectedOutput) => {
   try{
@@ -17,7 +17,7 @@ var test = (testToCheck, functionToTest, expectedOutput) => {
   return result
 }
 
-// dla każdego testuz validatora sprawdzamy, czy odpowiadająca funkcja z general zwraca 'true', a z incorrectFunction 'false' oraz zapisujemy w liscie wynik sprawdzenia
+// dla każdej funkcji z validatora sprawdzamy, czy zwraca spodziewany output oraz zapisujemy w liscie
 let resultList = []
 for( let fun in validator){
 
