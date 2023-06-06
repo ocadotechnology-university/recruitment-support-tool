@@ -25,17 +25,20 @@ const test = (testToCheck, functionToTest, expectedOutput) => {
 let resultList = []
 Object.keys(validator).forEach(fun => {
   let result = test(validator[fun], general[fun], true)
-  resultList[fun + '_true'] =  result
+  resultList[fun] =  {'true' : result}
   
   result = test(validator[fun], incorrectFunction[fun], false)
-  resultList[fun + '_false'] =  result
+  resultList[fun]['false'] =  result
 })
 
 // Write results every test with describe
 describe(`Directory ${__dirname.split('\\').pop()}, test validator`, function testing() {
   Object.keys(resultList).forEach(result => {
-    it(`This should test function ${result.split('_')[0]} with expected result ${result.split('_')[1]}`, function() {
-      expect(resultList[result]).to.be.true;
+    it(`This should test function ${result} with expected result TRUE`, function() {
+      expect(resultList[result]['true']).to.be.true;
+    });
+    it(`This should test function ${result} with expected result FALSE`, function() {
+      expect(resultList[result]['false']).to.be.true;
     })
   })
 });
