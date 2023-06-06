@@ -1,0 +1,88 @@
+{
+    "projectId": "",
+    "version": "",
+    "data": {
+      "files": {
+      },
+      "libs": {
+        "chai": {
+          "name": "chai",
+          "version": "4.3.7"
+        },
+        "jest": {
+          "name": "jest",
+          "version": "29.5.0"
+        },
+        "mocha": {
+          "name": "mocha",
+          "version": "10.2.0"
+        },
+        "module": {
+          "name": "module",
+          "version": "1.2.5"
+        }
+      },
+      "assets": [],
+      "layout": {
+        "id": "0",
+        "type": "column",
+        "content": [
+          {
+            "id": "1",
+            "parentId": "0",
+            "type": "stack",
+            "heightPercentage": 50,
+            "widthPercentage": 100,
+            "content": [
+            ]
+          },
+          {
+            "id": "2",
+            "parentId": "0",
+            "type": "row",
+            "heightPercentage": 50,
+            "widthPercentage": 100,
+            "content": [
+              {
+                "id": "3",
+                "parentId": "2",
+                "type": "stack",
+                "heightPercentage": 50,
+                "widthPercentage": 50,
+                "content": [
+                  {
+                    "id": "console",
+                    "parentId": "3",
+                    "type": "component",
+                    "title": "Console",
+                    "vueComponent": "EditorTabConsole",
+                    "active": true,
+                    "focused": false
+                  }
+                ]
+              },
+              {
+                "id": "2",
+                "parentId": "2",
+                "type": "stack",
+                "heightPercentage": 50,
+                "widthPercentage": 50,
+                "content": [
+                  {
+                    "id": "result",
+                    "parentId": "2",
+                    "type": "component",
+                    "title": "Website View",
+                    "vueComponent": "EditorTabResult",
+                    "active": true,
+                    "focused": false
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "liveReloadEnabled": true
+    }
+  }

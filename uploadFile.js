@@ -1,9 +1,10 @@
 const fs = require('fs');
 const path = require('path');
 const version = 1;
+const variables = require('./variables.json');
 
-let projectId = '';
-let bearerToken = '';
+const model_solutions = 'model_solutions.js'
+const validator_test = 'validator_test.js'
 
 const queryToBodyToFetchAPI = `mutation UpdateProjectData($projectId: Int!, $version: Int!, $data: JSON!) 
   {
@@ -13,112 +14,30 @@ const queryToBodyToFetchAPI = `mutation UpdateProjectData($projectId: Int!, $ver
     }
   }`;
 
-let variablesToBodyToFetchAPI = {
-  "projectId": projectId,
-  "version": version,
-  "data": {
-    "files": {
-    },
-    "libs": {
-      "chai": {
-        "name": "chai",
-        "version": "4.3.7"
+let variablesToBodyToFetchAPI = variables
+
+async function generateResponse(bearerToken) {
+
+  try{
+    const response = await fetch(`https://playcode.io/graphql`, {
+      method: "POST",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+        "authorization": `Bearer ${bearerToken}`
       },
-      "jest": {
-        "name": "jest",
-        "version": "29.5.0"
-      },
-      "mocha": {
-        "name": "mocha",
-        "version": "10.2.0"
-      },
-      "module": {
-        "name": "module",
-        "version": "1.2.5"
-      }
-    },
-    "assets": [],
-    "layout": {
-      "id": "0",
-      "type": "column",
-      "content": [
-        {
-          "id": "1",
-          "parentId": "0",
-          "type": "stack",
-          "heightPercentage": 50,
-          "widthPercentage": 100,
-          "content": [
-          ]
-        },
-        {
-          "id": "2",
-          "parentId": "0",
-          "type": "row",
-          "heightPercentage": 50,
-          "widthPercentage": 100,
-          "content": [
-            {
-              "id": "3",
-              "parentId": "2",
-              "type": "stack",
-              "heightPercentage": 50,
-              "widthPercentage": 50,
-              "content": [
-                {
-                  "id": "console",
-                  "parentId": "3",
-                  "type": "component",
-                  "title": "Console",
-                  "vueComponent": "EditorTabConsole",
-                  "active": true,
-                  "focused": false
-                }
-              ]
-            },
-            {
-              "id": "2",
-              "parentId": "2",
-              "type": "stack",
-              "heightPercentage": 50,
-              "widthPercentage": 50,
-              "content": [
-                {
-                  "id": "result",
-                  "parentId": "2",
-                  "type": "component",
-                  "title": "Website View",
-                  "vueComponent": "EditorTabResult",
-                  "active": true,
-                  "focused": false
-                }
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    "liveReloadEnabled": true
+      body: JSON.stringify({
+        query: queryToBodyToFetchAPI,
+        variables: variablesToBodyToFetchAPI
+      }),
+    });
+
+    const responseData = await response.json();
+    console.log("response", responseData);
   }
-}
-
-async function generateResponse() {
-
-  const response = await fetch(`https://playcode.io/graphql`, {
-    method: "POST",
-    credentials: "include",
-    headers: {
-      "Content-Type": "application/json",
-      "authorization": `Bearer ${bearerToken}`
-    },
-    body: JSON.stringify({
-      query: queryToBodyToFetchAPI,
-      variables: variablesToBodyToFetchAPI
-    }),
-  });
-
-  const responseData = await response.json();
-  console.log("response", responseData);
+  catch (err){
+    console.log("Error when sending query to Playcode.io. ERROR: " + err.message);
+  }
 }
 
 async function readDirectoriesRecursive(currentDirectoryFileSystem, currentDirectoryDictionary) {
@@ -132,7 +51,7 @@ async function readDirectoriesRecursive(currentDirectoryFileSystem, currentDirec
     if (newDirectoryToCheck.isDirectory()) {
       readDirectoriesRecursive(newDirectoryFileSystem, newDirectoryDictionary)
     } else {
-      if(element != 'model_solutions.js' && element != 'validator_test.js'){
+      if(element != model_solutions && element != validator_test){
         addContentOfFileToDictionary(newDirectoryFileSystem, newDirectoryDictionary)
       }
     }
@@ -147,17 +66,15 @@ async function addContentOfFileToDictionary(pathToFile, formattedPathToFile) {
 
 async function main() {
 
+  variablesToBodyToFetchAPI.version = version
+
   const args = process.argv.slice(1);
 
-  bearerToken = process.env.BEARER_TOKEN;
-  projectId = process.env.PROJECT_ID;
-  console.log(projectId)
-
-  variablesToBodyToFetchAPI.projectId = parseInt(projectId);
+  const bearerToken = process.env.BEARER_TOKEN;
+  variablesToBodyToFetchAPI.projectId = parseInt(process.env.PROJECT_ID);
 
   await readDirectoriesRecursive(args[1], '')
-  console.log("Number of files added to the paged: ", Object.keys(variablesToBodyToFetchAPI.data.files).length)
-  await generateResponse();
+  await generateResponse(bearerToken);
 }
 
 main()
