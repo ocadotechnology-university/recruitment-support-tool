@@ -76,8 +76,8 @@ var subtract = (functionToTest) => {
 
 //Funkcja tests
 var tests = describe('task validator:', function testing() {
-  it('subtract: This method should subtract a add b', () => subtract(general.subtract));
-
+  it('subtract: This method should subtract a add b', 
+      () => subtract(general.subtract));
 });
 ```
 
