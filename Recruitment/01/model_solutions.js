@@ -6,7 +6,6 @@ const general = {
   subtract : function(a, b) {
     return a - b
   },
-  
 };
 
 
