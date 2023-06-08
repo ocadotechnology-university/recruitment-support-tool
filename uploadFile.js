@@ -35,7 +35,7 @@ async function generateResponse(bearerToken) {
     console.log("response", responseData);
   }
   catch (err){
-    console.log("Error when sending query to Playcode.io. ERROR: " + err.message);
+    console.error("Error when sending query to Playcode.io. ERROR: " + err.message);
   }
 }
 
@@ -65,9 +65,21 @@ async function addContentOfFileToDictionary(pathToFile, formattedPathToFile) {
 
 async function main() {
   const args = process.argv.slice(1);
+  let bearerToken = ''
 
-  const bearerToken = process.env.BEARER_TOKEN;
-  variablesToBodyToFetchAPI.projectId = parseInt(process.env.PROJECT_ID);
+  try{
+    fs.statSync(args[1])
+  }catch(err){
+    console.error('Please enter a valid directory path')
+    process.exit()
+  }
+
+  try{
+    bearerToken = process.env.BEARER_TOKEN;
+    variablesToBodyToFetchAPI.projectId = parseInt(process.env.PROJECT_ID)
+  } catch (err) {
+    console.error('Error when reading environment variables. ERROR:' + err.message)
+  }
 
   await readDirectoriesRecursive(args[1], '')
   await generateResponse(bearerToken);
