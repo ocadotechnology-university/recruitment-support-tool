@@ -1,39 +1,45 @@
-var general = require('./model_solutions.js').general
-var incorrectFunction = require('./model_solutions.js').incorrectSolution
-var validator = require('./task_validator.js')
-var expect = require('chai').expect
+const general = require('./model_solutions.js').general
+const incorrectFunction = require('./model_solutions.js').incorrectSolution
+const validator = require('./task_validator')
+const expect = require('chai').expect
+const path = require('path')
 
-// tutaj dac funkcje z falsem 
-
-//funkcja przyjmuje dwa argumenty - funkcje do sprawdzenia (functionToCheck) oraz spodziewany output (expectedOutput), 
-//jeżeli sprawdzana funkcja zwraca spodziewany output to jako rezultat testu zwracamy true, w przeciwnym wypadku false
-var test = (testToCheck, functionToTest, expectedOutput) => {
+// function get 3 arguments 
+// 1. testToCheck - test function from task_validator.js file
+// 2. functionToTest - function to test from module from model_solutions.js file
+// 3. expectedOutput - expected output, which test should return, true for functions from general module and false for functions from incorrectSolutions module
+// function return true if tst return expected output otherwise false
+const test = (testToCheck, functionToTest, expectedOutput) => {
+  "use strict";
+  let res
   try{
     testToCheck(functionToTest)
-    result = (true === expectedOutput)
+    res =  expectedOutput
   }catch(err){
-    result = (false === expectedOutput)
+    res = !expectedOutput
   }
-  return result
+  return res
 }
 
-// dla każdej funkcji z validatora sprawdzamy, czy zwraca spodziewany output oraz zapisujemy w liscie
+// for every test, check matching function from general and incorrectSolutions and write result to list
 let resultList = []
-for( let fun in validator){
-
+Object.keys(validator).forEach(fun => {
   let result = test(validator[fun], general[fun], true)
-  resultList[fun + '_true'] =  result
+  resultList[fun] =  {'true' : result}
   
   result = test(validator[fun], incorrectFunction[fun], false)
-  resultList[fun + '_false'] =  result
-}
+  resultList[fun]['false'] =  result
+})
 
-// Wypisanie wyników testów na wyjscie
-describe('Test validator', function testing() {
-  for( let result in resultList){
-    it(`This should test function ${result.split('_')[0]} with expected result ${result.split('_')[1]}`, function() {
-      expect(resultList[result]).to.be.true;
+// Write results every test with describe
+describe(`Directory ${__dirname.split('\\').pop()}, test validator`, function testing() {
+  Object.keys(resultList).forEach(result => {
+    it(`This should test function ${result} with expected result TRUE`, function() {
+      expect(resultList[result]['true']).to.be.true;
+    });
+    it(`This should test function ${result} with expected result FALSE`, function() {
+      expect(resultList[result]['false']).to.be.true;
     })
-  }
+  })
 });
 

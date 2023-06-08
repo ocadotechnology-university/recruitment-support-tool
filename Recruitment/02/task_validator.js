@@ -13,8 +13,8 @@ var subtract = (functionToTest) => {
 }
 
 var tests = describe('task validator:', function testing() {
-  it('add: This method should add a and b', () => add(general.add));
-  it('subtract: This method should subtract a add b', () => subtract(general.subtract));
+  it('add: This method should add two number', () => add(general.add));
+  it('subtract: This method should subtract two number', () => subtract(general.subtract));
 });
 
 module.exports = {

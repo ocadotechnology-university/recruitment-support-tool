@@ -1,31 +1,23 @@
-general = (function() {
+const general = {
+  add : function(a, b) {
+    return a + b 
+  },
 
-    return {
-
-      add : function(a, b) {
-        return a + b
-      },
-
-      subtract : function(a, b) {
-        return a - b
-      },
-    };
-  
-  })();
+  subtract : function(a, b) {
+    return a - b
+  },
+};
 
 
-incorrectSolution = (function() {
-  return {
+const incorrectSolution = {
+  add : function(a, b) {
+    return a + b + 1
+  },
 
-    add : function(a, b) {
-      return a + b + 1
-    },
-
-    subtract : function(a, b) {
-      return b - a
-    },
-  };
-})();
+  subtract : function(a, b) {
+    return b - a
+  },
+};
 
 module.exports = {
   general,

@@ -1,6 +1,4 @@
-general = (function() {
-
-  return {
+let general = {
 
     /**
     * Returns sum of a and b.
@@ -14,8 +12,6 @@ general = (function() {
     subtract : function(a, b) {
     },
 
-  };
-
-})();
+};
 
 module.export = general;
