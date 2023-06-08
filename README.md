@@ -4,8 +4,9 @@ In project are used two environment variables saved on Github. These variables a
 - BEARER_TOKEN - bearer token, which we can get from developer tools from the browser. It's one of the headers in the GraphQL query
 - PROJECT_ID - it's the project's id, which we can take from URL address, when we had open the project
 
+
+
 # TODO
-- Information about versions
 - information about index.html file
 
 ## How it works  
@@ -13,7 +14,7 @@ In project are used two environment variables saved on Github. These variables a
 To add a new file, you should create a new branch as main branch's clone. On your branch add new exercises as it's member below. Before uploading new files, a script, which run  **validator_test.js** file, will be started on Github. If all tests run successfully, files will be upload to the repository. Otherwise, you should correct mistakes. When every file is ready to be uploaded to Playcode.io, you should create a new pull request to merge from your branch to main branch of another recruiter. After this recruiter accepts pull request and all files are uploaded to the main branch, Github will start a script, which uploads every file named **task.js** and **task_validator.js** and all configuration files.
 
 ## Testing
-To run **validator_test.js** locally you should use ```npm test ``` command in the Recruitment folder.
+To run **validator_test.js** locally you should use ```npm test``` command in the Recruitment folder.
 
 ## Directory structure
 
@@ -22,6 +23,14 @@ Only **Recruitment** directory is uploaded to the Playcode.io. This directory sh
 - file **model_solutions.js**
 - file **task_validator.js**
 - file **validator_test.js**
+>
+When you add new exercises to the project, you should include those files to **Recruitment/index.html** file, as shown in the example (below).
+>
+Example
+```html
+<script src="01/task.js"></script>
+<script src="01/task_validator.js"></script>
+```
 
 ### File **task.js**
 
@@ -89,5 +98,3 @@ module.exports = {
 ### File **validator_test.js**
 
 In this file we are checking if every test from validator return expected output - true for functions from *general* module and false for functions from *incorrectSolutions* module from **model_solutions.js** file.
->
-
