@@ -3,8 +3,8 @@ const path = require('path');
 const version = 1;
 const variables = require('./variables.json');
 
-const model_solutions = 'model_solutions.js'
-const validator_test = 'validator_test.js'
+const MODEL_SOLUTIONS_FILE_NAME = 'model_solutions.js'
+const VALIDATOR_TEST_FILE_NAME = 'validator_test.js'
 
 const queryToBodyToFetchAPI = `mutation UpdateProjectData($projectId: Int!, $version: Int!, $data: JSON!) 
   {
@@ -36,7 +36,7 @@ async function generateResponse(bearerToken) {
     console.log("response", responseData);
   }
   catch (err){
-    console.error("Error when sending query to Playcode.io. ERROR: " + err.message);
+    console.error("Error when sending query to Playcode.io.",  err);
   }
 }
 
@@ -51,7 +51,7 @@ async function readDirectoriesRecursive(currentDirectoryFileSystem, currentDirec
     if (newDirectoryToCheck.isDirectory()) {
       readDirectoriesRecursive(newDirectoryFileSystem, newDirectoryDictionary)
     } else {
-      if(element != model_solutions && element != validator_test){
+      if(element != MODEL_SOLUTIONS_FILE_NAME && element != VALIDATOR_TEST_FILE_NAME){
         addContentOfFileToDictionary(newDirectoryFileSystem, newDirectoryDictionary)
       }
     }

@@ -4,6 +4,6 @@
     "mocha": "^10.2.0"
   },
   "scripts": {
-    "test": "mocha ./**/validator_test*.js"
+    "test": "bash runTests.sh"
   }
 }

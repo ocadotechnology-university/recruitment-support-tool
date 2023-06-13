@@ -1,24 +1,22 @@
-## Environment variables
+## Environment variables 
 
-In project are used two environment variables saved on Github. These variables are:
+Environment variables used in the project:
 - BEARER_TOKEN - bearer token, which we can get from developer tools from the browser. It's one of the headers in the GraphQL query
-- PROJECT_ID - it's the project's id, which we can take from URL address, when we had open the project
+- PROJECT_ID - it's the project's id, which we can take from URL address, when we had opened the project
 
-# TODO
-- Information about versions
-- information about index.html file
-
+Those variables are stored in Github variables for pipelines. 
+To run the project locally, you must either create environment variables named as such or declare them temporarily when run the script.
 ## How it works  
 
-To add a new file, you should create a new branch as main branch's clone. On your branch add new exercises as it's member below. Before uploading new files, a script, which run  **validator_test.js** file, will be started on Github. If all tests run successfully, files will be upload to the repository. Otherwise, you should correct mistakes. When every file is ready to be uploaded to Playcode.io, you should create a new pull request to merge from your branch to main branch of another recruiter. After this recruiter accepts pull request and all files are uploaded to the main branch, Github will start a script, which uploads every file named **task.js** and **task_validator.js** and all configuration files.
-
+To add a new file, you should create a new branch as main branch's clone. On your branch add new exercises as its members below. When every file is ready to be uploaded to recruitment platform (we suggest running **validator_test.js** locally to make sure, that everythink is all right), you should create a new pull request to merge from your branch to main branch of another recruiter. After the recruiter accepts pull request and all files are uploaded to the main branch, Github's workflow will start **validator_test.js** for every directory and if every test passed, **uploadFile.js** - a script, which uploads every file named **task.js** and **task_validator.js** and all configuration files on recruitment platform. If any test fails, 
+**uploadFile.js** will be not execute, and you should correct your tasks.
 
 ## Testing
-To run **validator_test.js** locally you should use ```npm test ``` command in the Recruitment folder.
+To run **validator_test.js** locally you should use ```npm test``` command in the Recruitment folder.
 
 ## Directory structure
 
-Only **Recruitment** directory is uploaded to the Playcode.io. This directory should contain configuration files and directories with lists of exercises. Those directories should be named with a number (f.e. 02). Every directory with exercises is including 4 files:
+Only **Recruitment** directory is uploaded to the recruitment platform. This directory should contain configuration files and directories with lists of exercises. Those directories should be named with a number (f.e. 02). Every directory with exercises is including 4 files:
 - file **task.js** 
 - file **model_solutions.js**
 - file **task_validator.js**
@@ -26,16 +24,16 @@ Only **Recruitment** directory is uploaded to the Playcode.io. This directory sh
 
 ### File **task.js**
 
-This file should contain the instruction for the tasks for candidates with basic function structure. Candidate's job is to implement this function's body.
+This file contains tasks as functions declarations and their descriptions. Candidate has to implement it.
 >
 Example
 ```javascript
-let general = {
+const general = {
 
     /**
     * Returns difference of a and b.
     */
-    subtract : function(a, b) {
+    subtract: function(a, b) {
     },
 
 };
@@ -49,13 +47,13 @@ In this file there should be correct solutions enclosed in an object named *gene
 Example
 ```javascript 
 const general = {
-  subtract : function(a, b) {
+  subtract: function(a, b) {
     return a - b
   },
 };
 
 const incorrectSolution = {
-  subtract : function(a, b) {
+  subtract: function(a, b) {
     return b - a
   },
 };
@@ -77,10 +75,13 @@ var expect = require('chai').expect
 
 var subtract = (functionToTest) => {
   expect(functionToTest(8, 6)).to.eql(2);
+  expect(functionToTest(-2, 2)).to.eql(-4);
+  expect(functionToTest(-3, -6)).to.eql(3);
+  expect(functionToTest(0, 0)).to.eql(0);
 }
 
 var tests = describe('task validator:', function testing() {
-  it('subtract: This method should subtract two number', () => subtract(general.subtract));
+  it('subtract: This method should subtract two numbers', () => subtract(general.subtract));
 });
 
 module.exports = {
