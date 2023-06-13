@@ -7,7 +7,7 @@ const path = require('path')
 // function get 3 arguments 
 // 1. testToCheck - test function from task_validator.js file
 // 2. functionToTest - function to test from module from model_solutions.js file
-// 3. expectedOutput - expected output; true for functions from general module and false for functions from incorrectSolutions module
+// 3. expectedOutput - expected output, which test should return, true for functions from general module and false for functions from incorrectSolutions module
 // function return true if tst return expected output otherwise false
 const test = (testToCheck, functionToTest, expectedOutput) => {
   "use strict";

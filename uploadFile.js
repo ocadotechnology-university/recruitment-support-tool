@@ -1,6 +1,5 @@
 const fs = require('fs');
 const path = require('path');
-const version = 1;
 const variables = require('./variables.json');
 
 const MODEL_SOLUTIONS_FILE_NAME = 'model_solutions.js'
@@ -65,8 +64,6 @@ async function addContentOfFileToDictionary(pathToFile, formattedPathToFile) {
 }
 
 async function main() {
-
-  variablesToBodyToFetchAPI.version = version
   const args = process.argv.slice(1);
   let bearerToken = ''
 
