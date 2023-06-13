@@ -1,6 +1,10 @@
 name: run-node-script
 on: workflow_dispatch
 jobs:
+  check-test:
+    uses: <owner>/<repo>/.github/workflows/runTests.yml@main
+
+
   run-script:
     runs-on: ubuntu-latest
     container: node:18.16
