@@ -1,17 +1,21 @@
-const general = {
+general = (function() {
+
+  return {
 
     /**
-    * Returns product of a and b.
+    * Returns sum of a and b.
     */
-    multiplicate: function(a, b) {
+    add : function(a, b) {
     },
 
     /**
-    * Returns quotient of a and b.
+    * Returns difference of a and b.
     */
-    divide: function(a, b) {
+    subtract : function(a, b) {
     },
 
-};
+  };
+
+})();
 
 module.export = general;

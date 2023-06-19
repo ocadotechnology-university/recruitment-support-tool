@@ -1,27 +1,31 @@
 general = (function() {
-  return {
-    multiplicate: function(a, b) {
-      return a * b 
-    },
+
+    return {
+
+      add : function(a, b) {
+        return a + b
+      },
+
+      subtract : function(a, b) {
+        return a - b
+      },
+    };
   
-    divide: function(a, b) {
-      return a/b
+  })();
+
+
+incorrectSolution = (function() {
+  return {
+
+    add : function(a, b) {
+      return a + b + 1
+    },
+
+    subtract : function(a, b) {
+      return b - a
     },
   };
 })();
-
-//here we need IIFE, because otherwise in task_validator.js this test would fail, because '0 failed' as output is needed
-
-
-const incorrectSolution = {
-  multiplicate: function(a, b) {
-    return a + b
-  },
-
-  divide: function(a, b) {
-    return b - a
-  },
-};
 
 module.exports = {
   general,
