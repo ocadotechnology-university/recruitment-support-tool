@@ -1,0 +1,9 @@
+name: runTests
+on: workflow_dispatch
+jobs:
+  runTests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: chmod +x checkTestOutput.sh
+      - run: ./checkTestOutput.sh
