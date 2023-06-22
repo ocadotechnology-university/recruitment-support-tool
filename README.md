@@ -3,6 +3,11 @@
 * [General info](#general-info)
 * [Technologies](#technologies)
 * [Setup](#setup)
+* [Environment variables]
+* [How it works]
+* [Testing]
+* [Directory structure]
+
 ## General info
 This tool will help recruiters to maintain the programming tasks for candidates. After every merge, it will be executed from the pipeline. Among other things, the program will replace the content of the test files that are in GraphQL with those that are on the computer.
 
@@ -29,6 +34,7 @@ Environment variables used in the project:
 
 Those variables are stored in Github variables for pipelines. 
 To run the project locally, you must either create environment variables named as such or declare them temporarily when run the script.
+
 ## How it works  
 
 To add a new file, you should create a new branch as main branch's clone. On your branch add new exercises as its members below. When every file is ready to be uploaded to recruitment platform (we suggest running **validator_test.js** locally to make sure, that everythink is all right), you should create a new pull request to merge from your branch to main branch of another recruiter. After the recruiter accepts pull request and all files are uploaded to the main branch, Github's workflow will start **validator_test.js** for every directory and if every test passed, **uploadFile.js** - a script, which uploads every file named **task.js** and **task_validator.js** and all configuration files on recruitment platform. If any test fails, 
