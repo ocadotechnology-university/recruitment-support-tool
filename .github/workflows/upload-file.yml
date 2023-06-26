@@ -11,5 +11,5 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - run: chmod +x uploadFile.js
-      - run: node uploadFile.js
+      - run: node uploadFile.js ./Recruitment
   
