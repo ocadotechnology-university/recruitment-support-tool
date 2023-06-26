@@ -1,5 +1,10 @@
 name: upload-file
 on: workflow_dispatch
+env:
+  BEARER_TOKEN: ${{ secrets.BEARER_TOKEN }}
+  PROJECT_ID: ${{ secrets.PROJECT_ID }}
+
+
 jobs:
   check-test:
     uses: ocadotechnology-university/recruitment-support-tool/.github/workflows/runTests.yml@main
