@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const variables = require('./variables.json');
+require('dotenv').config()
 
 const MODEL_SOLUTIONS_FILE_NAME = 'model_solutions.js'
 const VALIDATOR_TEST_FILE_NAME = 'validator_test.js'

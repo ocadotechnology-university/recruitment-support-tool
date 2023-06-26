@@ -10,6 +10,7 @@ jobs:
     container: node:18.16
     steps:
       - uses: actions/checkout@v3
+      - run: npm install dotenv --save
       - run: chmod +x uploadFile.js
       - run: node uploadFile.js ./Recruitment
   
