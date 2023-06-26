@@ -3,15 +3,15 @@ general = (function() {
   return {
 
     /**
-    * Returns sum of a and b.
+    * Returns product of a and b.
     */
-    add : function(a, b) {
+    multiplicate: function(a, b) {
     },
 
     /**
-    * Returns difference of a and b.
+    * Returns quotient of a and b.
     */
-    subtract : function(a, b) {
+    divide: function(a, b) {
     },
 
   };

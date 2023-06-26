@@ -16,7 +16,7 @@ const subtract = (functionToTest) => {
 }
 
 const tests = describe('task validator:', function testing() {
-  it('add: This method should add two number', () => add(general.add));
+  it('add: This method should add two numbers', () => add(general.add));
   it('subtract: This method should subtract two numbers', () => subtract(general.subtract));
 });
 
