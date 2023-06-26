@@ -15,7 +15,7 @@ const subtract = (functionToTest) => {
   expect(functionToTest(0, 0)).to.eql(0);
 }
 
-const tests = describe('task validator:', function testing() {
+const tests = describe('task validator:', function () {
   it('add: This method should add two numbers', () => add(general.add));
   it('subtract: This method should subtract two numbers', () => subtract(general.subtract));
 });
