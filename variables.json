@@ -33,8 +33,7 @@
             "type": "stack",
             "heightPercentage": 50,
             "widthPercentage": 100,
-            "content": [
-            ]
+            "content": []
           },
           {
             "id": "2",
