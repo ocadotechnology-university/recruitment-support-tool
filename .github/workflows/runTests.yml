@@ -1,5 +1,6 @@
 name: runTests
-on: workflow_dispatch
+on: 
+  workflow_call:
 jobs:
   runTests:
     runs-on: ubuntu-latest
