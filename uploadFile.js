@@ -13,6 +13,7 @@ const queryToBodyToFetchAPI = `mutation UpdateProjectData($projectId: Int!, $ver
     }
   }`;
 
+let layoutContent = require('./layoutContent.json');
 let variablesToBodyToFetchAPI = variables
 
 async function generateResponse(bearerToken) {
@@ -61,6 +62,11 @@ async function addContentOfFileToDictionary(pathToFile, formattedPathToFile) {
 
   const data = fs.readFileSync(pathToFile, 'utf8')
   variablesToBodyToFetchAPI.data.files[formattedPathToFile] = { 'path': formattedPathToFile, 'value': data, 'isBinary': false }
+
+  layoutContent.id = formattedPathToFile
+  layoutContent.title = formattedPathToFile
+
+  variablesToBodyToFetchAPI.data.layout.content.push(layoutContent)
 }
 
 async function main() {
