@@ -83,6 +83,7 @@ async function main() {
 
   try{
     bearerToken = process.env.BEARER_TOKEN;
+    console.log(process.env.PROJECT_ID)
     variablesToBodyToFetchAPI.projectId = parseInt(process.env.PROJECT_ID)
   } catch (err) {
     console.error('Error when reading environment variables. ERROR:' + err.message)
