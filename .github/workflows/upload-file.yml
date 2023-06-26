@@ -2,7 +2,7 @@ name: run-node-script
 on: workflow_dispatch
 jobs:
   check-test:
-    uses: <owner>/<repo>/.github/workflows/runTests.yml@main
+    uses: ocadotechnology-university/recruitment-support-tool/.github/workflows/runTests.yml@main
 
 
   run-script:
