@@ -15,7 +15,7 @@ var divide_test = (functionToTest) => {
     expect(functionToTest(0, 1)).to.eql(0);
 }
 
-describe('task validator:', function () {
+describe(`Directory ${__dirname.split('\\').pop()}, tasks:`, function () {
   it('multiplicate: This method should multiplicate a and b', () => multiplicate_test(general_02.multiplicate));
   it('divide: This method should divide a add b', () => divide_test(general_02.divide));
 });

@@ -15,8 +15,8 @@ const subtract_test = (functionToTest) => {
   expect(functionToTest(0, 0)).to.eql(0);
 }
 
-describe('task validator:', function () {
-  it('add: This method should add two numbers', function() { add_test(general_01.add)});
+describe(`Directory ${__dirname.split('\\').pop()}, tasks:`, function () {
+  it('add: This method should add two numbers', () => add_test(general_01.add));
   it('subtract: This method should subtract two numbers', () => subtract_test(general_01.subtract));
 });
 
