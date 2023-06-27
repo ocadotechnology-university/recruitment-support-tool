@@ -1,8 +1,5 @@
 name: upload-file
-on: 
-  push:
-    branches:
-      - master
+on: workflow_dispatch
 env:
   BEARER_TOKEN: ${{ secrets.BEARER_TOKEN }}
   PROJECT_ID: ${{ secrets.PROJECT_ID }}
