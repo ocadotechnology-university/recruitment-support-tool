@@ -5,52 +5,52 @@
 * [Setup](#setup)
 * [Environment variables](#directory-structure)
 * [How it works](#how-it-works)
-* [Testing](#testing)
 * [Directory structure](#directory-structures)
 
 ## General info
-This tool will help recruiters to maintain the programming tasks for candidates. After every merge, it will be executed from the pipeline. Among other things, the program will replace the content of the test files that are in GraphQL with those that are on the computer.
+This tool will help recruiters to maintain the programming tasks for candidates. After every merge, it will be executed from the pipeline. Among other things, the program will replace the content of the test files that are in the GraphQL with those that are on the computer.
 
 
 ## Technologies
 Project is created with:
-* NodeJS version: 20.0.0
+* [NodeJS version: 20.0.0](https://nodejs.org/en)
 * [Mocha version: 10.2.0](https://mochajs.org/)
 * [Chai version: 4.3.7](https://www.chaijs.com/)
 
 
 ## Setup
-To run script test you should have bash installed.
+To run test script you must have bash installed.
 
-To run this project, navigate to inside the project folder on terminal where package.json file is located then type
+To run this project, navigate to inside the project folder using terminal where package.json file is located then type
 ```
 $ npm install
 $ node uploadFile.js [path to local folder containing test files]
 ```
+To run **validator_test.js** locally you should use ```npm test``` command in the Recruitment folder.
 
 ## Environment variables 
 Environment variables used in the project:
-- BEARER_TOKEN - bearer token, which we can get from developer tools from the browser. It's one of the headers in the GraphQL query
-- PROJECT_ID - it's the project's id, which we can take from URL address, when we had opened the project
+- BEARER_TOKEN - bearer token that can be taken from developer tools from the browser. It's one of the headers in the GraphQL query.
+- PROJECT_ID - it's the project's id that can be taken from URL address when the project is opened.
 
-Those variables are stored in Github variables for pipelines. 
-To run the project locally, you must either create environment variables named as such or declare them temporarily when run the script.
+Those variables are stored in Github secrets for pipelines. 
+To run the project locally, you must either create environment variables named as above or declare them temporarily when running the script.
 
 ## How it works  
-To add a new file, you should create a new branch as main branch's clone. On your branch add new exercises as its members below. When every file is ready to be uploaded to recruitment platform (we suggest running ```npm test``` locally to make sure, that everythink is all right), you should create a new pull request to merge from your branch to main branch of another recruiter. After the recruiter accepts pull request and all files are uploaded to the main branch, Github's workflow will start **validator_test.js** for every directory and if every test passed, **uploadFile.js** - a script, which uploads every file named **task.js** and **task_validator.js** and all configuration files on recruitment platform. If any test fails, 
-**uploadFile.js** will be not execute, and you should correct your tasks.
+To add a new file, you have to clone the main branch. On your branch add new exercises as it is mentioned below. When every file is ready to be uploaded to recruitment platform (we suggest running ```npm test``` locally to make sure, that everything went well), you should create a new pull request. After that another recruiter merges changes from your branch to main branch. After the recruiter accepts pull request and all files are uploaded to the main branch, Github's workflow will run **validator_test.js** for every directory. If every test passed, **uploadFile.js** - a script, which uploads every file named **task.js** and **task_validator.js** and all configuration files on recruitment platform - will be executed. If any test fails, 
+**uploadFile.js** will be not executed and you should correct your tasks.
 
-## Testing
-To run **validator_test.js** locally you should use ```npm test``` command in the Recruitment folder.
+
+
 
 ## Directory structure
-Only **Recruitment** directory is uploaded to the Playcode.io. This directory should contain configuration files and directories with lists of exercises. Every directory with exercises is including 4 files:
+Only **Recruitment** directory is uploaded to the recruitment platform. This directory should contain configuration files and directories with lists of exercises. Every directory with exercises is including 4 files:
 - file **task.js** 
 - file **model_solutions.js**
 - file **task_validator.js**
 - file **validator_test.js**
 >
-When you add new exercises to the project, you should include those files to **Recruitment/index.html** file, as shown in the example (below).
+When you add new exercises to the project, you should include files, mentioned below, to **Recruitment/index.html** file.
 >
 Example
 ```html
@@ -59,7 +59,7 @@ Example
 ```
 
 ### File **task.js**
-This file contains tasks as functions declarations and their descriptions. Candidate has to implement it. We suggest to name this module as general_{*directory name*}. Every module have to have diffrent name.
+This file contains tasks as functions declarations and their descriptions. Candidate has to implement them. We suggest to name this module as general_{*directory name*}. Module in every directory has to have unique name.
 >
 Example
 ```javascript
@@ -79,7 +79,7 @@ module.exports = {
 ```
 
 ### File **model_solutions.js**
-In this file there should be correct solutions enclosed in an object named *general*. Correct solution names should be the same as in **task.js** file. In object *incorrectSolutions* should be incorrect solutions, also named same as in **task.js** file. Module general have to have the same name as in **task.js** file
+This file should contain correct solutions enclosed in an object named as module in file taks.js. Correct solutions' names should be the same as in **task.js** file. Object *incorrectSolutions* should contain incorrect solutions, also named as tasks in **task.js** file. Module general has to have the same name as in **task.js** file.
 >
 Example
 ```javascript 
@@ -102,8 +102,8 @@ module.exports = {
 ```
 
 ### File **task_validator.js**
-This file should contain tests for all tasks from **task.js** file. Tests' names should be the same as tested functions. Additionaly you should rename value of ```javascript
-TASKS_LIST_NAME``` to tasks list name In separate scope we make assertions and later we check results for those assertions using *it* methods in *tests* function. Every testing function, which is added to the file, should be also added in *module.exports* object. Labels to test in *it* methods should follow the pattern: 
+This file should contain tests for all tasks in **task.js** file. Tests' names should be different than tested function name (we recommend to name them {*tested function name*}_test). Additionaly you should rename value of ```javascript
+TASKS_LIST_NAME``` to tasks' list name. In separate scope we make assertions and later we check results using *it* method in *describe* function. Every testing function, which is added to the file, should be also added to *module.exports* object. Labels used in *it* methods should follow this pattern:
 >
 *name of the testing function*: This method should *explain, what function should do*
 >
