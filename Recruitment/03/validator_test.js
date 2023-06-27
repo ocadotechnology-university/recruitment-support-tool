@@ -1,4 +1,4 @@
-const general = require('./model_solutions.js').general_01
+const general = require('./model_solutions.js').general_03
 const incorrectFunction = require('./model_solutions.js').incorrectSolution
 const validator = require('./task_validator')
 const expect = require('chai').expect
@@ -24,6 +24,7 @@ const test = (testToCheck, functionToTest, expectedOutput) => {
 
 // for every test, check matching function from general and incorrectSolutions and write result to list
 const resultList = Object.keys(validator).map(fun => {
+  console.log(fun)
   const correctResultValid = test(validator[fun], general[fun], true)
   const incorrectResultValid = test(validator[fun], incorrectFunction[fun], false)
   return {[fun]:{[CORRECT_KEY]: correctResultValid, [INCORRECT_KEY]: incorrectResultValid}}

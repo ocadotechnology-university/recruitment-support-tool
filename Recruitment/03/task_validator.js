@@ -19,7 +19,7 @@ var exponentiation_test = (functionToTest) => {
 
 
 describe(`${TASKS_LIST_NAME}:`, function () {
-    it('divisible: This method should checks if the number a is divisible by b.', () => divisible_test(general_03.add));
+    it('divisible: This method should checks if the number a is divisible by b.', () => divisible_test(general_03.divisible));
     it('exponentiation: This method should a raised to power b', () => exponentiation_test(general_03.exponentiation));
   });
 

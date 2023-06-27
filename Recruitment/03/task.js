@@ -17,5 +17,5 @@ window.general_03 = {
 };
 
 module.export = {
-    general: general_03
+    general_03
 }
