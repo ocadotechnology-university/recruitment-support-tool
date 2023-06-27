@@ -15,6 +15,7 @@ jobs:
 
   run-script:
   if: ${{contains(join(needs.*result, ','), 'success') }}
+  needs: [check-test]
     runs-on: ubuntu-latest
     container: node:18.16
     steps:
