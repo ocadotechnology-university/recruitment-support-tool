@@ -1,6 +1,6 @@
 const expect = require('chai').expect
 
-const add = (functionToTest) => {
+const add_test = (functionToTest) => {
     expect(functionToTest(5, 7)).to.eql(12);
     expect(functionToTest(-4, -3)).to.eql(-7);
     expect(functionToTest(0, 0)).to.eql(0); 
@@ -8,7 +8,7 @@ const add = (functionToTest) => {
     expect(functionToTest(4, 4)).to.eql(8) 
 }
 
-const subtract = (functionToTest) => {
+const subtract_test = (functionToTest) => {
   expect(functionToTest(8, 6)).to.eql(2);
   expect(functionToTest(-2, 2)).to.eql(-4);
   expect(functionToTest(-3, -6)).to.eql(3);
@@ -16,12 +16,12 @@ const subtract = (functionToTest) => {
 }
 
 const tests = describe('task validator:', function () {
-  it('add: This method should add two numbers', () => add(general.add));
-  it('subtract: This method should subtract two numbers', () => subtract(general.subtract));
+  it('add: This method should add two numbers', () => add_test(general.add));
+  it('subtract: This method should subtract two numbers', () => subtract_test(general.subtract));
 });
 
 module.exports = {
-  add,
-  subtract,
+  add: add_test,
+  subtract: subtract_test,
 }
 

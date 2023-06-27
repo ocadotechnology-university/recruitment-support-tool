@@ -1,10 +1,10 @@
 const fs = require('fs');
 const path = require('path');
 const variables = require('./variables.json');
-require('dotenv').config()
 
 const MODEL_SOLUTIONS_FILE_NAME = 'model_solutions.js'
 const VALIDATOR_TEST_FILE_NAME = 'validator_test.js'
+const RUN_TEST = 'runTests.sh'
 
 const queryToBodyToFetchAPI = `mutation UpdateProjectData($projectId: Int!, $version: Int!, $data: JSON!) 
   {
@@ -52,7 +52,7 @@ async function readDirectoriesRecursive(currentDirectoryFileSystem, currentDirec
     if (newDirectoryToCheck.isDirectory()) {
       readDirectoriesRecursive(newDirectoryFileSystem, newDirectoryDictionary)
     } else {
-      if(element != MODEL_SOLUTIONS_FILE_NAME && element != VALIDATOR_TEST_FILE_NAME){
+      if(element != MODEL_SOLUTIONS_FILE_NAME && element != VALIDATOR_TEST_FILE_NAME && element != RUN_TEST){
         addContentOfFileToDictionary(newDirectoryFileSystem, newDirectoryDictionary)
       }
     }
@@ -67,7 +67,7 @@ async function addContentOfFileToDictionary(pathToFile, formattedPathToFile) {
   layoutContent.id = formattedPathToFile
   layoutContent.title = formattedPathToFile
 
-  variablesToBodyToFetchAPI.data.layout.content.push(layoutContent)
+  variablesToBodyToFetchAPI.data.layout.content[0].content.push(layoutContent)
 }
 
 async function main() {
@@ -83,7 +83,6 @@ async function main() {
 
   try{
     bearerToken = process.env.BEARER_TOKEN;
-    console.log(process.env.PROJECT_ID)
     variablesToBodyToFetchAPI.projectId = parseInt(process.env.PROJECT_ID)
   } catch (err) {
     console.error('Error when reading environment variables. ERROR:' + err.message)

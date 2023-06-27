@@ -1,6 +1,6 @@
-general = (function() {
+window.general = (function() {
 
-  return {
+  return{
 
     /**
     * Returns product of a and b.
@@ -13,9 +13,7 @@ general = (function() {
     */
     divide: function(a, b) {
     },
-
   };
-
 })();
 
 module.export = general;

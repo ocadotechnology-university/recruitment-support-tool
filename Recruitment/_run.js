@@ -1,2 +1,2 @@
-import mocha from 'node_modules/mocha/mocha.js';
+import mocha from 'mocha/mocha.js'
 mocha.run();
