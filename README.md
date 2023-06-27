@@ -5,7 +5,7 @@
 * [Setup](#setup)
 * [Environment variables](#directory-structure)
 * [How it works](#how-it-works)
-* [Directory structure](#directory-structures)
+* [Directory structure](#directory-structure)
 
 ## General info
 This tool will help recruiters to maintain the programming tasks for candidates. After every merge, it will be executed from the pipeline. Among other things, the program will replace the content of the test files that are in the GraphQL with those that are on the computer.
@@ -63,15 +63,16 @@ This file contains tasks as functions declarations and their descriptions. Candi
 >
 Example
 ```javascript
-window.general_01 = {
+window.general_01 = (function() {
 
+    return{
     /**
-    * Returns difference of a and b.
+    * Returns sum of a and b.
     */
-    subtract: function(a, b) {
+    add: function(a, b) {
     },
-
-};
+    };
+})();
 
 module.exports = {
     general: general_01,
@@ -83,15 +84,16 @@ This file should contain correct solutions enclosed in an object named as module
 >
 Example
 ```javascript 
-const general_01 = {
-  subtract: function(a, b) {
-    return a - b
-  },
-};
-
+general_01 = (function() {
+  return {
+    add: function(a, b) {
+      return a + b 
+    }
+  };
+})();
 const incorrectSolution = {
-  subtract: function(a, b) {
-    return b - a
+  add: function(a, b) {
+    return a + b + 1
   },
 };
 
@@ -109,22 +111,22 @@ TASKS_LIST_NAME``` to tasks' list name. In separate scope we make assertions and
 >
 Example
 ```javascript 
-var expect = require('chai').expect
+const expect = require('chai').expect
 const TASKS_LIST_NAME = 'List 01'
 
-var subtract = (functionToTest) => {
-  expect(functionToTest(8, 6)).to.eql(2);
-  expect(functionToTest(-2, 2)).to.eql(-4);
-  expect(functionToTest(-3, -6)).to.eql(3);
-  expect(functionToTest(0, 0)).to.eql(0);
+const add_test = (functionToTest) => {
+    expect(functionToTest(5, 7)).to.eql(12);
+    expect(functionToTest(-4, -3)).to.eql(-7);
+    expect(functionToTest(0, 0)).to.eql(0); 
+    expect(functionToTest(-2, 2)).to.eql(0);
+    expect(functionToTest(4, 4)).to.eql(8) 
 }
-describe(`${TASK_LIST_NAME}:`, function () {
-  it('subtract: This method should subtract two numbers', () => subtract_test(general_01.subtract));
+describe(`${TASKS_LIST_NAME}:`, function () {
+  it('add: This method should add two numbers', () => add_test(general_01.add));
 });
 
-
 module.exports = {
-  subtract: subtract_test
+  add: add_test,
 }
 ```
 
