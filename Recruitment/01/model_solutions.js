@@ -1,4 +1,4 @@
-general = (function() {
+general_01 = (function() {
   return {
     add: function(a, b) {
       return a + b 
@@ -23,6 +23,6 @@ const incorrectSolution = {
 };
 
 module.exports = {
-  general,
+  general_01,
   incorrectSolution
 }

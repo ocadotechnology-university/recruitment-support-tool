@@ -1,4 +1,4 @@
-const general = require('./model_solutions.js').general
+const general = require('./model_solutions.js').general_01
 const incorrectFunction = require('./model_solutions.js').incorrectSolution
 const validator = require('./task_validator')
 const expect = require('chai').expect
