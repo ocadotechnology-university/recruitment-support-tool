@@ -32,7 +32,7 @@ const resultList = Object.keys(validator).map(fun => {
 }, {})
 
 // Write results every test with describe
-describe(`Directory ${__dirname.split('\\').pop()}, test validator`, () => {
+describe(`Directory ${__dirname.split('\\').pop()}, tests:`, () => {
   Object.keys(resultList).map(result => {
     it(`This should test function ${result} with expected result TRUE`, () => {
       expect(resultList[result][CORRECT_KEY]).to.be.true;
