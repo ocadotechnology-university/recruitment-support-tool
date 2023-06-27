@@ -1,5 +1,3 @@
-const { general_03 } = require("./model_solutions");
-
 window.general_03 = {
 
     /**
