@@ -1,7 +1,7 @@
-var expect = require('chai').expect
+const expect = require('chai').expect
 const TASKS_LIST_NAME = 'List 02'
 
-var multiplicate_test = (functionToTest) => {
+const multiplicate_test = (functionToTest) => {
     expect(functionToTest(5, 7)).to.eql(35);
     expect(functionToTest(-4, -3)).to.eql(12);
     expect(functionToTest(0, 0)).to.eql(0); 
@@ -9,7 +9,7 @@ var multiplicate_test = (functionToTest) => {
     expect(functionToTest(4, 4)).to.eql(16) 
 }
 
-var divide_test = (functionToTest) => {
+const divide_test = (functionToTest) => {
     expect(functionToTest(8, 6)).to.eql(4/3);
     expect(functionToTest(-2, 2)).to.eql(-1);
     expect(functionToTest(-3, -6)).to.eql(0.5);
@@ -17,8 +17,8 @@ var divide_test = (functionToTest) => {
 }
 
 describe(`${TASKS_LIST_NAME}:`, function () {
-  it('multiplicate: This method should multiplicate a and b', () => multiplicate_test(general_02.multiplicate));
-  it('divide: This method should divide a add b', () => divide_test(general_02.divide));
+  it('multiplicate: This method should multiplicate two numbers', () => multiplicate_test(general_02.multiplicate));
+  it('divide: This method should divide two numbers', () => divide_test(general_02.divide));
 });
 
 module.exports = {

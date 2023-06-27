@@ -1,4 +1,4 @@
-const general_02 = (function() {
+general_02 = (function() {
   return {
     multiplicate: function(a, b) {
       return a * b 

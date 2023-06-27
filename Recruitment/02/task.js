@@ -18,5 +18,5 @@ window.general_02 = (function() {
 })();
 
 module.exports = {
-  general: general_02,
+  general_02,
 }
