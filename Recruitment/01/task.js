@@ -5,8 +5,6 @@ window.general_01 = (function() {
     * Returns sum of a and b.
     */
     add: function(a, b) {
-
-    //test is this working
     },
 
     /**
@@ -18,5 +16,5 @@ window.general_01 = (function() {
 })();
 
 module.exports = {
-    general: general_01,
+    general_01,
 }

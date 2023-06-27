@@ -6,7 +6,6 @@ window.general_02 = (function() {
     * Returns product of a and b.
     */
     multiplicate: function(a, b) {
-      return a*b
     },
 
     /**

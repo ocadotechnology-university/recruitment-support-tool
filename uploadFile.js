@@ -37,7 +37,7 @@ async function generateResponse(bearerToken) {
     console.log("response", responseData);
   }
   catch (err){
-    console.error("Error when sending query to Playcode.io.",  err);
+    console.error("Error when sending query to recruitment platform",  err);
   }
 }
 
