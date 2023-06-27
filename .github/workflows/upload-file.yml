@@ -2,7 +2,7 @@ name: upload-file
 on: 
   push:
     branches:
-      - master
+      - main
 env:
   BEARER_TOKEN: ${{ secrets.BEARER_TOKEN }}
   PROJECT_ID: ${{ secrets.PROJECT_ID }}
