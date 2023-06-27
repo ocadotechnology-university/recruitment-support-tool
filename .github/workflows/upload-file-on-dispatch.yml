@@ -1,4 +1,4 @@
-name: upload-file
+name: upload-file-dispatch
 on: workflow_dispatch
 env:
   BEARER_TOKEN: ${{ secrets.BEARER_TOKEN }}
