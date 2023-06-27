@@ -1,4 +1,5 @@
 const expect = require('chai').expect
+const TASKS_LIST_NAME = 'List 01'
 
 const add_test = (functionToTest) => {
     expect(functionToTest(5, 7)).to.eql(12);
@@ -15,7 +16,7 @@ const subtract_test = (functionToTest) => {
   expect(functionToTest(0, 0)).to.eql(0);
 }
 
-describe(`Directory ${__dirname.split('\\').pop()}, tasks:`, function () {
+describe(`${TASKS_LIST_NAME}:`, function () {
   it('add: This method should add two numbers', () => add_test(general_01.add));
   it('subtract: This method should subtract two numbers', () => subtract_test(general_01.subtract));
 });
