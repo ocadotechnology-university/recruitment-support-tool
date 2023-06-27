@@ -15,13 +15,15 @@ var divide_test = (functionToTest) => {
     expect(functionToTest(0, 1)).to.eql(0);
 }
 
-var tests = describe('task validator:', function () {
-  it('multiplicate: This method should multiplicate a and b', () => multiplicate_test(general.multiplicate));
-  it('divide: This method should divide a add b', () => divide_test(general.divide));
+describe('task validator:', function () {
+  it('multiplicate: This method should multiplicate a and b', () => multiplicate_test(general_02.multiplicate));
+  it('divide: This method should divide a add b', () => divide_test(general_02.divide));
 });
 
 module.exports = {
   multiplicate: multiplicate_test,
   divide: divide_test,
 }
+
+
 

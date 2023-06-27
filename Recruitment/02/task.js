@@ -1,4 +1,4 @@
-window.general = (function() {
+window.general_02 = (function() {
 
   return{
 
@@ -6,6 +6,7 @@ window.general = (function() {
     * Returns product of a and b.
     */
     multiplicate: function(a, b) {
+      return a*b
     },
 
     /**
@@ -16,4 +17,6 @@ window.general = (function() {
   };
 })();
 
-module.export = general;
+module.exports = {
+  general: general_02,
+}
