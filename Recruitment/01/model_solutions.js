@@ -1,4 +1,4 @@
-general_01 = (function() {
+const general_01 = (function() {
   return {
     add: function(a, b) {
       return a + b 
