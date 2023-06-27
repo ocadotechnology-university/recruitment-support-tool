@@ -131,5 +131,9 @@ module.exports = {
 ```
 
 ### File **validator_test.js**
-In this file we are checking if every test from validator return expected output - true for functions from *general* module and false for functions from *incorrectSolutions* module from **model_solutions.js** file.
-
+In this file we are checking if every test from validator return expected output - true for functions from *general* module and false for functions from *incorrectSolutions* module from **model_solutions.js** file. It is crucial to do import from the file (in this case) general_01 from the model_solutions.js.
+>
+Example
+```javascript 
+const general = require('./model_solutions.js').general_01
+```
